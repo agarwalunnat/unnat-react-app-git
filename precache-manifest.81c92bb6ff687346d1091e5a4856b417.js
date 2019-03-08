@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "6b9bf524a452562f4062",
+    "revision": "7dba2823e749f67de409",
     "url": "/unnat-react-app-git/static/css/main.a768af53.chunk.css"
   },
   {
-    "revision": "6b9bf524a452562f4062",
-    "url": "/unnat-react-app-git/static/js/main.6b9bf524.chunk.js"
+    "revision": "7dba2823e749f67de409",
+    "url": "/unnat-react-app-git/static/js/main.7dba2823.chunk.js"
   },
   {
     "revision": "d035b49954cbab025ae2",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/unnat-react-app-git/static/js/2.019a8ac6.chunk.js"
   },
   {
-    "revision": "1f95a73ea6dcecbb32955fca5ce10d35",
+    "revision": "9954d98b31b86ad7a6a764b2f0d2f254",
     "url": "/unnat-react-app-git/index.html"
   }
 ];

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/unnat-react-app-git/precache-manifest.7296fd62144039e02c3c8e32e29ce325.js"
+  "/unnat-react-app-git/precache-manifest.81c92bb6ff687346d1091e5a4856b417.js"
 );
 
 workbox.clientsClaim();
