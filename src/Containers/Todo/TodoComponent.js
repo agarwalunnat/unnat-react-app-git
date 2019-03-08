@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
 
-function TaskModel(name, status) {
-  this.name = name || '';
-  this.status = status || 'pending';
+function TaskModel(name = '', isDone = false) {
+  this.name = name;
+  this.isDone = isDone;
   this.id = uniqid();
 }
 const defaultTask = new TaskModel();
@@ -11,7 +11,7 @@ const defaultTask = new TaskModel();
 export default class TodoComponent extends Component {
   state = {
     incomingTask: defaultTask,
-    DEFAULT_TODO: [
+    todoList: [
       new TaskModel('get bread'),
       new TaskModel('study german'),
       new TaskModel('code'),
@@ -21,22 +21,22 @@ export default class TodoComponent extends Component {
 
   removeTodo = (id) => {
     // OPTION 1 
-    // const d = [...this.state.DEFAULT_TODO];
+    // const d = [...this.state.todoList];
     // d.splice(index, 1);
     // this.setState({
-    //   DEFAULT_TODO: d,
+    //   todoList: d,
     // });
     // OPTION 2 
     this.setState({
-      DEFAULT_TODO: this.state.DEFAULT_TODO.filter((todoItem) => todoItem.id !== id),
+      todoList: this.state.todoList.filter((todoItem) => todoItem.id !== id),
     })
   }
 
   addItem = (e) => {
     e.preventDefault();
-    const { DEFAULT_TODO, incomingTask } = this.state;
+    const { todoList, incomingTask } = this.state;
     this.setState({
-      DEFAULT_TODO: [incomingTask, ...DEFAULT_TODO],
+      todoList: [incomingTask, ...todoList],
       incomingTask: defaultTask
     })
   }
@@ -48,21 +48,37 @@ export default class TodoComponent extends Component {
   }
 
   editTodo = (id) => {
-    const { DEFAULT_TODO } = this.state;
-    const editedTask = DEFAULT_TODO.filter(
+    const { todoList } = this.state;
+
+    const editedTask = todoList.filter(
       (todoItem) => todoItem.id === id).pop();
 
-    const defaultCopy = DEFAULT_TODO.filter(
+    const defaultCopy = todoList.filter(
       (todoItem) => todoItem.id !== id);
 
     this.setState({
       incomingTask: editedTask,
-      DEFAULT_TODO: defaultCopy,
+      todoList: defaultCopy,
+    });
+  }
+
+  doneTodo = (id) => {
+    const { todoList } = this.state;
+
+    const todo = todoList.filter(
+      (todoItem) => todoItem.id === id).pop();
+    todo.isDone = true;
+    
+    const defaultCopy = todoList.filter(
+      (todoItem) => todoItem.id !== id);
+
+    this.setState({
+      todoList: [...defaultCopy, todo],
     });
   }
 
   render() {
-    const { DEFAULT_TODO } = this.state;
+    const { todoList } = this.state;
     return (
       <div>
         <form onSubmit={(e) => this.addItem(e)}>
@@ -74,33 +90,29 @@ export default class TodoComponent extends Component {
           <button type="submit"> Add Task </button>
         </form>
         <TodoList
-          todoList={DEFAULT_TODO}
-          delete={(id) => {
-            this.removeTodo(id)
-          }}
-          edit={(id) => {
-            this.editTodo(id)
-          }}
+          todoList={todoList}
+          delete={(id) => this.removeTodo(id)}
+          edit={(id) => this.editTodo(id)}
+          done={(id) => this.doneTodo(id)}
         />
       </div>
     );
   }
 }
 
-
 const TodoList = (props) => {
   return (
     <div>
       {props.todoList
-        .map((todoItem) => (
-          <div key={todoItem.id}>
-            <span>{todoItem.name}</span>
-            <button onClick={() => {
-              props.edit(todoItem.id)
-            }}>Edit</button>
-            <button onClick={() => {
-              props.delete(todoItem.id)
-            }}>Delete</button>
+        .map(({ id, name, isDone }) => (
+          <div key={id}>
+            <span style={isDone ? { textDecoration: 'line-through' } : {}}>{name}</span>
+            <button onClick={() => props.edit(id)}>Edit</button>
+            <button onClick={() => props.delete(id)}>Delete</button>
+            <button 
+            onClick={() => props.done(id)}
+            style={isDone ? { display: 'none' } : {}}
+            >Mark Done</button>
           </div>
         ))
       }
