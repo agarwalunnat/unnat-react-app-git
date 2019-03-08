@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 // STEP: 2 #Router
-import { Route, NavLink, withRouter } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import './Blog.css';
 import TodoComponent from '../Todo/TodoComponent';
 import BasicReduxComponent from '../BasicRedux/BasicReduxComponent';
 
-class Blog extends Component {
+export default class Blog extends Component {
     render() {
-        const { url: basePath } = this.props.match;
         return (
             <div className="Blog">
                 <header>
                     <nav>
                         <ul>
                             <li><NavLink to="/" exact>Home</NavLink></li>
-                            <li><NavLink to={{ pathname: `${basePath}/todo` }}>Todo</NavLink></li>
-                            <li><NavLink to={{ pathname: `${basePath}/basicRedux` }}>Basic Redux</NavLink></li>
+                            <li><NavLink to={{pathname: '/todo'}}>Todo</NavLink></li>
+                            <li><NavLink to={{pathname: '/basicRedux'}}>Basic Redux</NavLink></li>
                             {/* <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
@@ -35,4 +34,3 @@ class Blog extends Component {
     }
 }
 
-export default withRouter(Blog);
