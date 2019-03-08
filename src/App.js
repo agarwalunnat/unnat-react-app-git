@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import SuperContainer from './Containers/Blog/Blog';
+import Blog from './Containers/Blog/Blog';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       // STEP: 1 #Router
       <BrowserRouter>
         <div className="App">
-          <SuperContainer />
+          <Blog />
         </div>
       </BrowserRouter>
     );
