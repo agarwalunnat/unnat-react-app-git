@@ -1,14 +1,13 @@
 {
-  "main.css": "/unnat-react-app-git/static/css/main.cbedbf7c.chunk.css",
-  "main.js": "/unnat-react-app-git/static/js/main.aedcb3f3.chunk.js",
-  "main.js.map": "/unnat-react-app-git/static/js/main.aedcb3f3.chunk.js.map",
+  "main.css": "/unnat-react-app-git/static/css/main.5612060e.chunk.css",
+  "main.js": "/unnat-react-app-git/static/js/main.87e072c6.chunk.js",
+  "main.js.map": "/unnat-react-app-git/static/js/main.87e072c6.chunk.js.map",
   "runtime~main.js": "/unnat-react-app-git/static/js/runtime~main.d035b499.js",
   "runtime~main.js.map": "/unnat-react-app-git/static/js/runtime~main.d035b499.js.map",
-  "static/js/2.063ce5bc.chunk.js": "/unnat-react-app-git/static/js/2.063ce5bc.chunk.js",
-  "static/js/2.063ce5bc.chunk.js.map": "/unnat-react-app-git/static/js/2.063ce5bc.chunk.js.map",
+  "static/js/2.21f62bce.chunk.js": "/unnat-react-app-git/static/js/2.21f62bce.chunk.js",
+  "static/js/2.21f62bce.chunk.js.map": "/unnat-react-app-git/static/js/2.21f62bce.chunk.js.map",
   "index.html": "/unnat-react-app-git/index.html",
-  "precache-manifest.4c329ab16e6ea1731f5cfa0b446d3d44.js": "/unnat-react-app-git/precache-manifest.4c329ab16e6ea1731f5cfa0b446d3d44.js",
+  "precache-manifest.bbe8b55655a9257c2e47938f6fc49126.js": "/unnat-react-app-git/precache-manifest.bbe8b55655a9257c2e47938f6fc49126.js",
   "service-worker.js": "/unnat-react-app-git/service-worker.js",
-  "static/css/main.cbedbf7c.chunk.css.map": "/unnat-react-app-git/static/css/main.cbedbf7c.chunk.css.map",
-  "static/media/logo.svg": "/unnat-react-app-git/static/media/logo.5d5d9eef.svg"
+  "static/css/main.5612060e.chunk.css.map": "/unnat-react-app-git/static/css/main.5612060e.chunk.css.map"
 }
