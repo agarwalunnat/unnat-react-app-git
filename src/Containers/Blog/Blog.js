@@ -5,6 +5,7 @@ import { Route, NavLink } from 'react-router-dom';
 import './Blog.css';
 import TodoComponent from '../Todo/TodoComponent';
 import BasicReduxComponent from '../BasicRedux/BasicReduxComponent';
+import TodoAsyncComponent from '../ReduxAsync/TodoAsyncComponent'
 
 export default class Blog extends Component {
     render() {
@@ -16,6 +17,7 @@ export default class Blog extends Component {
                             <li><NavLink to="/" exact>Home</NavLink></li>
                             <li><NavLink to={{pathname: '/todo'}}>Todo</NavLink></li>
                             <li><NavLink to={{pathname: '/basicRedux'}}>Basic Redux</NavLink></li>
+                            <li><NavLink to={{pathname: '/asyncRedux'}}>Async Redux</NavLink></li>
                             {/* <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
@@ -27,6 +29,7 @@ export default class Blog extends Component {
                 <Route path="/" exact render={() => <h1>No body home</h1>} />
                 <Route path="/todo" component={TodoComponent} />
                 <Route path="/basicRedux" component={BasicReduxComponent} />
+                <Route path="/asyncRedux" component={TodoAsyncComponent} />
             </div>
         );
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // Step#3 redux
 import { connect } from 'react-redux';
 class BasicReduxComponent extends Component {
+  
   render() {
     const { ctr } = this.props;
     return (

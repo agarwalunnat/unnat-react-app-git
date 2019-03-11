@@ -10,10 +10,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 // import reducer from './store/DEPRICATED---reducer';
 import CounterReducer from './store/reducers/CounterReducer';
 import ResultReducer from './store/reducers/ResultReducer';
+import TodoReducer from './store/reducers/TodoReducer';
 
 const rootReducer = combineReducers({
     ctr: CounterReducer,
     res: ResultReducer,
+    todo: TodoReducer,
 });
 
 // Created own middleware
