@@ -17,7 +17,7 @@ export default class Blog extends Component {
                             <li><NavLink to="/" exact>Home</NavLink></li>
                             <li><NavLink to={{pathname: '/todo'}}>Todo</NavLink></li>
                             <li><NavLink to={{pathname: '/basicRedux'}}>Basic Redux</NavLink></li>
-                            <li><NavLink to={{pathname: '/asyncRedux'}}>Async Redux</NavLink></li>
+                            <li><NavLink to={{pathname: '/asyncRedux'}}>Async Redux(Thunk)</NavLink></li>
                             {/* <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',

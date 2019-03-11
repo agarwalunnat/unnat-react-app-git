@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // Step#1 redux
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+// Step#2 redux
 import { Provider } from 'react-redux';
+// Redux thunk introduced
+import thunk from 'redux-thunk';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// Step#2 redux
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 // import reducer from './store/DEPRICATED---reducer';
 import CounterReducer from './store/reducers/CounterReducer';
 import ResultReducer from './store/reducers/ResultReducer';
@@ -22,14 +25,13 @@ const rootReducer = combineReducers({
 const loggerReducer = (store) => {
     return (next) => {
         return (action) => {
-            console.log('MiddleWare', action);
             const result = next(action);
-            console.log('MiddleWare', result, store.getState());
+            console.log('MiddleWare', store.getState());
             return result;
         }
     }
 }
-const store = createStore(rootReducer, applyMiddleware(loggerReducer));
+const store = createStore(rootReducer, applyMiddleware(loggerReducer, thunk));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
