@@ -17,7 +17,7 @@ class BasicReduxComponent extends Component {
         </div>
         <hr />
         <div>
-          <button onClick={this.props.onStore}>Store result</button>
+          <button onClick={() => this.props.onStore(ctr)}>Store result</button>
         </div>
         <ul>
           {
@@ -38,8 +38,8 @@ class BasicReduxComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ctr: state.counter,
-    storedResult: state.results
+    ctr: state.ctr.counter,
+    storedResult: state.res.results
   };
 }
 
@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
     onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
     onAdd: () => dispatch({ type: 'ADD', value: 5 }),
     onSubtract: () => dispatch({ type: 'SUBTRACT', value: 5 }),
-    onStore: () => dispatch({ type: 'STORE_RESULT' }),
+    onStore: (result) => dispatch({ type: 'STORE_RESULT', result }),
     deleteResult: (id) => dispatch({ type: 'DELETE_RESULT', id })
   }
 }
