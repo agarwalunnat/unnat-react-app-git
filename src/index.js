@@ -6,17 +6,28 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 // Step#2 redux
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 // import reducer from './store/DEPRICATED---reducer';
 import CounterReducer from './store/reducers/CounterReducer';
 import ResultReducer from './store/reducers/ResultReducer';
 
-const r = combineReducers({
+const rootReducer = combineReducers({
     ctr: CounterReducer,
     res: ResultReducer,
 });
 
-const store = createStore(r);
+// Created own middleware
+const loggerReducer = (store) => {
+    return (next) => {
+        return (action) => {
+            console.log('MiddleWare', action);
+            const result = next(action);
+            console.log('MiddleWare', result, store.getState());
+            return result;
+        }
+    }
+}
+const store = createStore(rootReducer, applyMiddleware(loggerReducer));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
