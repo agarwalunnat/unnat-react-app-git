@@ -4,19 +4,54 @@ import { connect } from 'react-redux';
 class BasicReduxComponent extends Component {
   render() {
     const { ctr } = this.props;
-    console.log(ctr);
     return (
-      <div>
-        <h1>I am BasicReduxComponent {ctr}</h1>
-      </div>
+      <React.Fragment>
+        <div>
+          <h1>Counter: {ctr}</h1>
+        </div>
+        <div>
+          <button onClick={this.props.onIncrementCounter}>Increment</button>
+          <button onClick={this.props.onDecrementCounter}>Decrement</button>
+          <button onClick={this.props.onAdd}>Add 5</button>
+          <button onClick={this.props.onSubtract}>Subtract 5</button>
+        </div>
+        <hr />
+        <div>
+          <button onClick={this.props.onStore}>Store result</button>
+        </div>
+        <ul>
+          {
+            this.props.storedResult.map(({ id, value }) => {
+              return (
+                <div key={id}>
+                  <li>{value}</li>
+                  <button onClick={() => this.props.deleteResult(id)}> Delete </button>
+                </div>);
+            })
+          }
+        </ul>
+      </React.Fragment>
+
     );
   }
 };
 
 const mapStateToProps = (state) => {
   return {
-    ctr: state.counter
+    ctr: state.counter,
+    storedResult: state.results
   };
 }
 
-export default connect(mapStateToProps)(BasicReduxComponent);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onIncrementCounter: () => dispatch({ type: 'INCREMENT' }),
+    onDecrementCounter: () => dispatch({ type: 'DECREMENT' }),
+    onAdd: () => dispatch({ type: 'ADD', value: 5 }),
+    onSubtract: () => dispatch({ type: 'SUBTRACT', value: 5 }),
+    onStore: () => dispatch({ type: 'STORE_RESULT' }),
+    deleteResult: (id) => dispatch({ type: 'DELETE_RESULT', id })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasicReduxComponent);
